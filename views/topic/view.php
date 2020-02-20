@@ -34,17 +34,24 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
     
-    <?= app\widgets\PostControllerWidget::widget([
+    
+    
+    <p>Latest post</p>
+    
+    <?= !$model->last_post_id ? 'No posts' : app\widgets\PostControllerWidget::widget([
         'action' => 'view',
         'params' => [
             'id' => $model->last_post_id,
         ],
     ]) ?>
     
+    <p>All posts</p>
+    
     <?= app\widgets\PostControllerWidget::widget([
         'action' => 'index',
         'params' => [
             'query' => $model->getPosts(),
+            'owner_id' => $model->id,
         ],
     ]) ?>
 

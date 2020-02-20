@@ -18,7 +18,7 @@ class PostControllerWidget extends \ianikanov\wce\Widget
      * Lists all Post models.
      * @return mixed
      */
-    public function actionIndex($query)
+    public function actionIndex($query, $owner_id)
     {
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -26,6 +26,7 @@ class PostControllerWidget extends \ianikanov\wce\Widget
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
+            'owner_id' => $owner_id,            
         ]);
     }
 
@@ -47,10 +48,10 @@ class PostControllerWidget extends \ianikanov\wce\Widget
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($owner_id)
     {
         $model = new Post();
-
+        $model->topic_id = $owner_id;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return 'success';
         }

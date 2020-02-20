@@ -17,7 +17,7 @@ $this->title = 'My Yii Application';
             'params' => [
                 'query' => app\models\Topic::find()
             ],
-            ]) ?>
+        ]) ?>
 
     </div>
 </div>

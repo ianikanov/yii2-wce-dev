@@ -21,7 +21,7 @@ $action['callback'] = \Yii::$app->request->url;
 
     <?= $form->field($model, 'details')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'topic_id')->textInput() ?>
+    <?= Html::activeHiddenInput($model, 'topic_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

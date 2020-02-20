@@ -13,7 +13,7 @@ use yii\bootstrap\Modal;
     <?php
     Modal::begin([
         'header' => '<h2>'.Html::encode('Update Post: ' . $model->title).'</h2>',
-        'toggleButton' => ['tag' => 'a', 'label' => 'Update', 'class' => 'btn btn-primary'],
+        'toggleButton' => ['tag' => 'a', 'label' => '<span class="glyphicon glyphicon-pencil"></span>', 'style' => 'cursor: pointer'],
     ]);
 
     echo $this->render('_form', [

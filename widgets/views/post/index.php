@@ -1,9 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
+/* @var $owner_id integer */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $embeddedController string Route to embedded controller */
 
@@ -13,19 +14,14 @@ use yii\grid\GridView;
     <h2><?= Html::encode('Posts') ?></h2>
 
     <p>
-        <?= app\widgets\PostControllerWidget::widget(['action' => 'create']) ?>
+        <?= app\widgets\PostControllerWidget::widget(['action' => 'create', 'params'=>['owner_id' => $owner_id]]) ?>
     </p>
 
-    <?= GridView::widget([
+    <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'title',
-            'details',
-            'topic_id',
-
-        ],
-    ]); ?>
+        'itemOptions' => ['class' => 'item'],
+        'itemView' => function ($model, $key, $index, $widget) {
+            return app\widgets\PostControllerWidget::widget(['action' => 'view', 'params'=>['id' => $model->id]]);
+        },
+    ]) ?>
 </div>

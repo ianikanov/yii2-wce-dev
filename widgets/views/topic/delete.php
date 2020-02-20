@@ -11,8 +11,7 @@ use yii\widgets\DetailView;
 ?>
 <span class="topic-widget-delete">
 
-    <?= Html::a('Delete', [$embeddedController, 'action' => 'topic/delete', 'id' => $model->id, 'callback' => \Yii::$app->request->url], [
-        'class' => 'btn btn-danger',
+    <?= Html::a('<span class="glyphicon glyphicon-trash"></span>', [$embeddedController, 'action' => 'topic/delete', 'id' => $model->id, 'callback' => \Yii::$app->request->url], [
         'data' => [
             'confirm' => 'Are you sure you want to delete this item?',
             'method' => 'post',
